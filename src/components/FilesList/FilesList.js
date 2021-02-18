@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FileCard } from '../FileCard/FileCard'
+import { FileCard } from '../FileCard/FileCard';
 import classNames from 'classnames';
 import './FilesList.css';
 
