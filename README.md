@@ -1,1 +1,1 @@
-[DEMO](https://dima-bond.github.io/react_dynamic-list-of-posts/)
+[DEMO](https://dima-bond.github.io/files-api-app/)
