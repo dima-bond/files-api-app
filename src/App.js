@@ -12,12 +12,12 @@ function App() {
   const [filteredFiles, setFilteredFiles] = useState([]);
 
   useEffect(() => {
-    fetch('http://fs.mh.net.ua/ajax/lsjson.php?dir=global/video&idu=1')
-    .then(response => response.json())
-    .then(result => {
-      setFiles(result)
-      setFilteredFiles(result)
-    })
+    fetch('https://fs.mh.net.ua/ajax/lsjson.php?dir=global/video&idu=1')
+      .then(response => response.json())
+      .then(result => {
+        setFiles(result)
+        setFilteredFiles(result)
+      });
   }, []);
 
   useMemo (() => {
