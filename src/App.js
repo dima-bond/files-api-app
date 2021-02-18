@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
+import { bake_cookie, read_cookie } from 'sfcookies';
 import { FilesList } from './components/FilesList/FilesList';
 import { dateFromString, compareSize } from './components/helpers';
 import './App.css';
@@ -17,12 +18,13 @@ function App() {
       .then(result => {
         setFiles(result)
         setFilteredFiles(result)
+        setSortBy(read_cookie('sortCookie'))
       });
   }, []);
 
   useMemo (() => {
     let filesToShow = [...filteredFiles];
-    switch(sortBy) {
+    switch(read_cookie('sortCookie')) {
       case 'name':
         filesToShow.sort((a, b) => a.name.localeCompare(b.name));
         break;
@@ -44,6 +46,7 @@ function App() {
 
   const handleSortChange = (e) => {
     setSortBy(e.target.value)
+    bake_cookie('sortCookie', e.target.value);
     setSearchQuery('')
     setIsReverse(false);
   };
