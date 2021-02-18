@@ -11,6 +11,7 @@ function App() {
   const [isReverse, setIsReverse] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredFiles, setFilteredFiles] = useState([]);
+  const [serverError, setserverError] = useState(false);
 
   useEffect(() => {
     fetch('https://fs.mh.net.ua/ajax/lsjson.php?dir=global/video&idu=1')
@@ -19,7 +20,8 @@ function App() {
         setFiles(result)
         setFilteredFiles(result)
         setSortBy(read_cookie('sortCookie'))
-      });
+      })
+      .catch(() => setserverError(true));
   }, []);
 
   useMemo (() => {
@@ -95,10 +97,15 @@ function App() {
           placeholder="Search file by name"
         />
       </div>
-      {(filteredFiles.length === 0) ?
-      <h2>No files were found...</h2>
-      : <FilesList files={filteredFiles}/>
-      }
+      {(serverError)
+        ? <h2>
+            Server is temporarily unavailable. <br/>
+            Please, try again later.
+          </h2>
+        : (filteredFiles.length === 0) ?
+          <h2>No files were found...</h2>
+          : <FilesList files={filteredFiles}/>
+          }
     </div>
   );
 }
