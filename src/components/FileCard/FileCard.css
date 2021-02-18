@@ -1,0 +1,30 @@
+.card {
+  position: relative;
+  cursor: pointer;
+}
+
+.card__image {
+  height: 100px;
+}
+
+.card__details {
+  position: absolute;
+  z-index: 1;
+  width: 170px;
+  padding: 10px;
+  top: 0;
+  left: 0;
+  background-color: white;
+  opacity: 0;
+  transition: all 0.3s ease-out;
+  cursor: pointer;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  box-shadow: 0 0 10px 10px rgb(209, 207, 207);
+  border-radius: 10px;
+  transform: translateX(-25%);
+}
+
+.card__details--active {
+  opacity: 1;
+}

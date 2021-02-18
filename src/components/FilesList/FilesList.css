@@ -1,0 +1,17 @@
+.files-container {
+  list-style: none;
+  margin: 50px auto;
+  padding: 0 50px;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  place-items: center;
+  max-width: 1200px;
+}
+
+@media screen and (max-width: 650px) {
+  .files-container {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    margin: 30px auto;
+  }
+}
